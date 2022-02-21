@@ -1,0 +1,57 @@
+// ps antar det räcker bara med en scss fil med js är i fokus och det är bara lite css. Men jag vet varibels och layout ska var egna-
+
+// varibels
+$truems:rgb(185, 185, 185);
+$lightms:rgb(170, 170, 170);
+$darkms:rgb(195, 195, 195);
+$redms:rgb(255,0,0);
+$blackms:rgb(0,0,0);
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// -----
+
+html{
+    padding: 0%;
+    margin: 0%;
+}
+
+// layout
+body{
+    background-color: $lightms;
+    @include center;
+    flex-direction: column;
+    header{
+        top: 0px;
+        background-color: $truems ;
+        @include center;
+        width: 100vw;
+        h1{
+            color: $redms;
+            background-color: transparent;
+            // extra lägg till bra font
+        }
+    }
+    main{
+        background-color: $darkms;
+        // storlek ska bli auto sen med innehålet bestämer storlek, nu är det bara för ser färg och sånt
+        height: auto; 
+        width: auto;
+        ul{
+            height: 90%;
+            width: 90%;
+            overflow: hidden;
+
+            li{
+                list-style-type: none;
+                img{
+                    height: 5rem;
+                    width: 5rem;
+                }
+            }
+        }
+    }
+}
