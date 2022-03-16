@@ -1,43 +1,47 @@
 // Antal bilder du har skriv här in
-let decksizepair = "12"
+let decksizepair = 12;
 
-function memoDeck(){
-    let deck = new Array();
-    for(let i = 0; i < 2*decksizepair; i++){
-        for(let x = 0; x < 2; x++){
+const deck = [];
 
-            let memocard = {imgnum: i + 1, cardnum: 2 * decksizepair - i }
-            // tror detta skapar ett unikt kort för varsit och unkit tal. 
-            // Kan krävas gör om matten där jag vet ej om flertal matte i js funkar.
-            
+    for(let i = 1;i<=decksizepair  ;i++){
 
+        for(let j=1;j<=2;j++){
+
+            let memocard = { 
+                imgnum: i,
+                cardnum: (decksizepair*j) - i +1
+            };
+
+           
+
+            deck.push(memocard)
         }
-
-    }
-}
-
-function shuffleDeck(deck){
-
-    for (let i = 0; i < 100; i++){
-
-        let place1 = math.ceil((Math.random()* deck.length));
-        let place2 = math.ceil((Math.random()* deck.length));
-        let tmp = deck[place1];
         
+        
+    }
+//  console.log(deck), stämmer blir varan så ser lite udda men det innebär det är redan blandat med varan
+console.log(deck)
+
+
+    for (let i = 0; i <= 10*deck.length; i++){
+
+        let place1 = Math.floor(Math.random()*deck.length);
+        let place2 = Math.floor(Math.random()*deck.length);
+        let tmp = deck[place1];
+
         deck[place1] = deck[place2];
         deck[place2] = tmp; 
 
-
     }
-}
 
+
+    // mer här med få det till rätt format och sånt
 function inputDeckHTML (deck){
 
     // kort består en <li> som sedan har en <img> i sig.
     document.getElementById("playarea").innerHTML = "";
 
     for(let i = 0; i<deck.length;i++ ){
-
         let memocard = document.createElement("li");
         memocard.className = cardnum
         // Vill inom li skapa en <img> som använder bild för baksida, sedan ska en senare funktion byta ut den till imgnum. Men går att testa med imgnum till en början
@@ -45,6 +49,7 @@ function inputDeckHTML (deck){
     }    
 
 }
+
 
 // skapa en vändare function
 
