@@ -40,6 +40,10 @@ body{
         // storlek ska bli auto sen med innehålet bestämer storlek, nu är det bara för ser färg och sånt
         height: auto; 
         width: auto;
+        min-width: 30vw;
+        min-height: 30vh;
+        margin-top: 2vh;
+
         ul{
             height: 90%;
             width: 90%;
