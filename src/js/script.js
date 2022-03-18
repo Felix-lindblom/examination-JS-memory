@@ -79,6 +79,8 @@ const deck = [];
     // bonus är göra en timmer som liknar minesweeper
     
 
+    // bonus också är leta font
+
 
    
 
