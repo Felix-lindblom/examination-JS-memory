@@ -47,12 +47,30 @@ body main {
   min-width: 30vw;
   min-height: 30vh;
   margin-top: 2vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 50rem;
 }
 
 body main ul {
   height: 90%;
   width: 90%;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  gap: 0.1rem;
 }
 
 body main ul li {
@@ -60,7 +78,15 @@ body main ul li {
 }
 
 body main ul li img {
-  height: 5rem;
-  width: 5rem;
+  height: 7rem;
+  width: auto;
+}
+
+body main ul .hidden {
+  display: none;
+}
+
+body main ul .show {
+  display: inline;
 }
 /*# sourceMappingURL=main.css.map */

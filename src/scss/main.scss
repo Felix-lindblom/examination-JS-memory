@@ -43,19 +43,36 @@ body{
         min-width: 30vw;
         min-height: 30vh;
         margin-top: 2vh;
+        @include center;
+        max-width: 50rem;
+        
 
         ul{
             height: 90%;
             width: 90%;
             overflow: hidden;
-
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            gap: 0.1rem;
             li{
                 list-style-type: none;
                 img{
-                    height: 5rem;
-                    width: 5rem;
+                    height: 7rem;
+                    width: auto;
                 }
             }
+
+            .hidden{
+                display: none;
+                // eller
+                // visibility:hidden;
+            }
+            .show{
+                display: inline;
+                //  vet ej men en gissnik, annars andra display typer
+            }
+
         }
     }
 }

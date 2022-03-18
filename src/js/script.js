@@ -42,16 +42,22 @@ const deck = [];
         for(let i = 0; i<=deck.length;i++){
             var pl = document.querySelector('.playarea');
 
-            // börjar bli sent nu...
-            // får inte till att skapa <li>, för jag vill gör en li som har bilden i sig. Li ska hålla cardnum även. 
- 
-            // var cardli = document.createElement("li");
-            // cardli.setAttribute("${i}");
-            // pl.appendChild(cardli);
 
-            var pic = document.createElement("img");
-            pic.src = "img/minesweeper-img/bak.png";
-            pl.appendChild(pic);
+            var contli = document.createElement("li");
+            contli.id = deck.valueOf(deck.cardnum)[i].cardnum;
+            pl.appendChild(contli);
+            
+            var dimg = document.createElement("img")
+            dimg.src = "img/minesweeper-img/" + deck.valueOf(deck.imgnum)[i].imgnum + ".png";
+            dimg.className = "front"
+            contli.appendChild(dimg);
+
+            var bimg = document.createElement("img")
+            bimg.src = "img/minesweeper-img/bak.png";
+            bimg.className = "back"
+            contli.appendChild(bimg)
+            
+            
         
         
         }
@@ -61,8 +67,16 @@ const deck = [];
     display()
 
 
-    // jag tänkte göra om man clicka byter man ut bak.png till matchade bild till cardnum. 
-    // Dock vet jag ej om den är dålig id med man inte kan flippa. 
+    // click funktion sedan som vänder 2 i taget och kan göra ett vilkor test
+
+    // sedan funktion som räknar poäng och sätter igång proces att avsluta
+
+    // bonus är restarta utan refresha sidan
+
+    // bonus är start knapp och vinn knapp som vanliga minesweeper. Smile som man klickar och om man vinner blir det sunglasses. 
+    // detta må kräva lägga till en nav över spelet
+    // bonus är när man hoovrar över ovända kort (kan göras med class back kanske)
+    // bonus är göra en timmer som liknar minesweeper
     
 
 
