@@ -1,4 +1,4 @@
-// Antal bilder du har skriv här in
+// Antal bilder du har lagt in och vill köra med skriv in det här
 let decksizepair = 12;
 
 const deck = [];
@@ -22,6 +22,8 @@ const deck = [];
 
 
 //      Tyckte deck.length*10 var inte tillräckligt 
+
+
     for (let i = 0; i <= deck.length**2; i++){
 
         let place1 = Math.floor(Math.random()*deck.length);
@@ -54,17 +56,12 @@ const deck = [];
             dimg.src = "img/minesweeper-img/" + deck.valueOf(deck.imgnum)[i].imgnum + ".png";
             dimg.className = "front";
             contli.appendChild(dimg);
-
-            
-
         
         };
-        
 
     };
     // kan göra så man kan starta spelet med starta funktion display
     display();
-
 
     let timeshere = 0
     let firstcard = ""
@@ -78,8 +75,6 @@ const deck = [];
             elmt[1].classList.remove(cotc); 
         }                        
     }
-    
-    
 
     document.querySelectorAll(".card").forEach(elmt => {
 
@@ -93,12 +88,10 @@ const deck = [];
                     if(timeshere < 2){
                         if(timeshere===1){
                     
-                            if((firstcard - decksizepair) === (celmt.path[1]).id || (firstcard + decksizepair) === (celmt.path[1]).id){
+                            if(Math.abs(firstcard - (celmt.path[1]).id) === decksizepair ){
                                 turn("front","hit")
-                                turn("back","lockback")
-                                // elmt.querySelector(".front").classList.add("hit"); 
-                                // elmt.querySelector(".back").classList.add("lockback"); 
-                                timeshere++
+                                turn("back","lockback") 
+                                timeshere = 1
                                 firstcard = ""
                                 score++
                                 console.log("hit")
@@ -107,9 +100,6 @@ const deck = [];
                                 turn("back","onback")
                                 timeshere++
                                 firstcard = ""
-                                console.log("miss")
-                                console.log((firstcard - decksizepair))
-                                console.log((firstcard + decksizepair))
                             }
 
                         }else{
@@ -117,8 +107,6 @@ const deck = [];
                             firstcard = (celmt.path[1]).id
                             elmt.querySelector(".front").classList.add("activecard"); 
                             elmt.querySelector(".back").classList.add("onback");
-                            console.log("first click")
-                            console.log(firstcard)
                         }
 
                     }else{
