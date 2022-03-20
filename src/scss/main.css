@@ -70,7 +70,6 @@ body main ul {
       flex-wrap: wrap;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
-  gap: 0.1rem;
 }
 
 body main ul li {
@@ -82,11 +81,23 @@ body main ul li img {
   width: auto;
 }
 
-body main ul .hidden {
+body main ul .front {
   display: none;
 }
 
-body main ul .show {
+body main ul .front:hover {
+  cursor: default;
+}
+
+body main ul .back:hover {
+  cursor: pointer;
+}
+
+body main ul .activecard {
   display: inline;
+}
+
+body main ul .onback {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
