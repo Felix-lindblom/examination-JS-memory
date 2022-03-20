@@ -21,8 +21,8 @@ const deck = [];
 //  console.log(deck), stämmer blir varan så ser lite udda men det innebär det är redan blandat med varan
 
 
-
-    for (let i = 0; i <= deck.length*10; i++){
+//      Tyckte deck.length*10 var inte tillräckligt 
+    for (let i = 0; i <= deck.length**2; i++){
 
         let place1 = Math.floor(Math.random()*deck.length);
         let place2 = Math.floor(Math.random()*deck.length);
@@ -66,17 +66,69 @@ const deck = [];
     display();
 
 
+    let timeshere = 0
+    let firstcard = ""
+    let score = 0
+
+    // cotc = class of the card    
+    function unturn(cotc){
+        let elmt = document.querySelectorAll("." + cotc)
+            if(elmt.length > 0) {
+            elmt[0].classList.remove(cotc); 
+            elmt[1].classList.remove(cotc); 
+        }                        
+    }
+    // lcotc = looking (for) class of the card acotc = Added class of the card
+    function turn(lcotc,acotc){
+        elmt.querySelector("." + lcotc).classList.add(acotc); 
+    }
+
     document.querySelectorAll(".card").forEach(elmt => {
-    
-            elmt.addEventListener("click",()=>{
-                elmt.querySelector(".front").classList.toggle("activecard"); 
-                elmt.querySelector(".back").classList.toggle("onback"); 
+
                 
-            })
+                elmt.addEventListener("click",(celmt)=>{
+
+                    if(timeshere < 2){
+                        if(timeshere===1){
+                    
+                            if((firstcard - decksizepair) === (celmt.path[1]).id || (firstcard + decksizepair) === (celmt.path[1]).id){
+                                turn("front","hit")
+                                turn("back","lockback")
+                                timeshere++
+                                firstcard = ""
+                                score++
+                                console.log("hit")
+                            }else{
+                                turn("front","activecard")
+                                turn("back","onback")
+                                timeshere++
+                                firstcard = ""
+                                console.log("miss")
+                                console.log((firstcard - decksizepair))
+                                console.log((firstcard + decksizepair))
+                            }
+
+                        }else{
+                            timeshere++
+                            firstcard = (celmt.path[1]).id
+                            elmt.querySelector(".front").classList.add("activecard"); 
+                            elmt.querySelector(".back").classList.add("onback");
+                            console.log("first click")
+                            console.log(firstcard)
+                        }
+
+                    }else{
+                        timeshere = 0
+                        unturn("activecard");
+                        unturn("onback");
+                    }
+                
+                    
+                })
+            
             
     });
 
-   
 
     // gör en funktion som läser om det finns det finns 2 activa kort och om det blir ett trejde så tar den bort alla aktiva kort. 
     // Men om 2 aktiv har matchade id lägg till ny class som är "matched"

@@ -100,4 +100,12 @@ body main ul .activecard {
 body main ul .onback {
   display: none;
 }
+
+body main ul .hit {
+  display: inline;
+}
+
+body main ul .lockback {
+  display: none;
+}
 /*# sourceMappingURL=main.css.map */

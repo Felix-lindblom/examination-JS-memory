@@ -72,14 +72,18 @@ body{
             .back:hover{
                 cursor: pointer;
             }
-
             .activecard{
                 display: inline;
             }
             .onback{
                 display: none;
             }
-
+            .hit{
+                display: inline;
+            }
+            .lockback{
+                display: none;
+            }
         }
     }
 }
