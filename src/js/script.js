@@ -78,13 +78,15 @@ const deck = [];
             elmt[1].classList.remove(cotc); 
         }                        
     }
-    // lcotc = looking (for) class of the card acotc = Added class of the card
-    function turn(lcotc,acotc){
-        elmt.querySelector("." + lcotc).classList.add(acotc); 
-    }
+    
+    
 
     document.querySelectorAll(".card").forEach(elmt => {
 
+            // lcotc = looking (for) class of the card acotc = Added class of the card
+            function turn(lcotc,acotc){
+                elmt.querySelector("."+ lcotc).classList.add(acotc); 
+            }
                 
                 elmt.addEventListener("click",(celmt)=>{
 
@@ -94,6 +96,8 @@ const deck = [];
                             if((firstcard - decksizepair) === (celmt.path[1]).id || (firstcard + decksizepair) === (celmt.path[1]).id){
                                 turn("front","hit")
                                 turn("back","lockback")
+                                // elmt.querySelector(".front").classList.add("hit"); 
+                                // elmt.querySelector(".back").classList.add("lockback"); 
                                 timeshere++
                                 firstcard = ""
                                 score++
