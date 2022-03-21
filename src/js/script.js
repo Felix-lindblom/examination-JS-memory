@@ -22,8 +22,6 @@ const deck = [];
 
 
 //      Tyckte deck.length*10 var inte tillräckligt 
-
-
     for (let i = 0; i <= deck.length**2; i++){
 
         let place1 = Math.floor(Math.random()*deck.length);
@@ -66,22 +64,30 @@ const deck = [];
     let timeshere = 0
     let firstcard = ""
     let score = 0
+    // let deepcard = ""
 
     // cotc = class of the card    
     function unturn(cotc){
         let elmt = document.querySelectorAll("." + cotc)
-            if(elmt.length > 0) {
-            elmt[0].classList.remove(cotc); 
-            elmt[1].classList.remove(cotc); 
-        }                        
-    }
+                if(elmt.length > 0) {
+                    elmt[0].classList.remove(cotc); 
+                    elmt[1].classList.remove(cotc); 
+                }
+    }                        
+                    
+                
+                                 
+    
 
     document.querySelectorAll(".card").forEach(elmt => {
 
             // lcotc = looking (for) class of the card acotc = Added class of the card
             function turn(lcotc,acotc){
-                elmt.querySelector("."+ lcotc).classList.add(acotc); 
+                elmt.querySelector("."+ lcotc).classList.add(acotc);
             }
+
+
+            
                 
                 elmt.addEventListener("click",(celmt)=>{
 
@@ -89,21 +95,37 @@ const deck = [];
                         if(timeshere===1){
                     
                             if(Math.abs(firstcard - (celmt.path[1]).id) === decksizepair ){
+                                
                                 turn("front","hit")
                                 turn("back","lockback") 
-                                timeshere = 1
-                                firstcard = ""
+                                
+                                // let pl = document.querySelector(".playarea")
+                                // let lia = pl.querySelectorAll("li")
+                                // let co = lia.querySelector("."+firstcard)
+                                
+                                // console.log(pl)
+                                // console.log(lia)
+
+                                // console.log(pl.querySelector("#"+firstcard))
+                                // pl.querySelector("#"+firstcard).setAttribrute("class","hit")
+                                // pl.querySelector("#"+firstcard).setAttribrute(".class","lockback")
+
+                                timeshere++
                                 score++
                                 console.log("hit")
+                                // wonLast = true
+                                
                             }else{
                                 turn("front","activecard")
                                 turn("back","onback")
                                 timeshere++
-                                firstcard = ""
+                                // firstcard = ""
+                                // wonLast=false
                             }
 
                         }else{
                             timeshere++
+                            // deepcard = celmt.path
                             firstcard = (celmt.path[1]).id
                             elmt.querySelector(".front").classList.add("activecard"); 
                             elmt.querySelector(".back").classList.add("onback");
@@ -113,7 +135,8 @@ const deck = [];
                         timeshere = 0
                         unturn("activecard");
                         unturn("onback");
-                    }
+                        }
+                    
                 
                     
                 })
@@ -122,8 +145,10 @@ const deck = [];
     });
 
 
-    // gör en funktion som läser om det finns det finns 2 activa kort och om det blir ett trejde så tar den bort alla aktiva kort. 
-    // Men om 2 aktiv har matchade id lägg till ny class som är "matched"
+    // Vet exakt vad felet är. Felet är det tidgare kort kan jag inte få till hit och lockback classen. Med lite olika kod kan man få objektet försvinna och med andra bara inte vända. 
+    // känd bug är att det går klicka på vända kort och använda det. Kan förstöra score systemt.
+    // klockan är tock för sent, 3:37 när jag skriver detta
+    // får bli vad det blir, skulle nog satt det om jag kunde få hjälp på denna delen.
 
     // sedan funktion som räknar poäng och sätter igång proces att avsluta
     // funktionen kan räkna matched och sedan jämföra med decksizepair för vet om det är klart
